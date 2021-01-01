@@ -675,3 +675,4 @@ public final class BluetoothCodecConfig implements Parcelable {
                 return true;
         }
     }
+}
