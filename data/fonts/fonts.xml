@@ -447,9 +447,6 @@
     <family lang="und-Prti">
         <font weight="400" style="normal">NotoSansInscriptionalParthian-Regular.ttf</font>
     </family>
-    <family lang="und-Java">
-        <font weight="400" style="normal">NotoSansJavanese-Regular.ttf</font>
-    </family>
     <family lang="und-Kthi">
         <font weight="400" style="normal">NotoSansKaithi-Regular.ttf</font>
     </family>
@@ -624,6 +621,9 @@
     </family>
     <family lang="und-Hatr">
         <font weight="400" style="normal">NotoSansHatran-Regular.otf</font>
+    </family>
+    <family lang="und-Java">
+        <font weight="400" style="normal">NotoSansJavanese-Regular.otf</font>
     </family>
     <family lang="und-Lina">
         <font weight="400" style="normal">NotoSansLinearA-Regular.otf</font>
