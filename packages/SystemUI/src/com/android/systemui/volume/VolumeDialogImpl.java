@@ -621,7 +621,7 @@ public class VolumeDialogImpl implements VolumeDialog,
         VolumeRow notification = findRow(STREAM_NOTIFICATION);
         VolumeRow active = getActiveRow();
 
-        float width = mWidth + mSpacer;
+        final float width = mWidth + mSpacer;
         float z = mElevation;
 
         boolean isMediaButtonVisible = mMediaButtonView.getVisibility() == VISIBLE;
@@ -638,28 +638,29 @@ public class VolumeDialogImpl implements VolumeDialog,
             hideCaptionsTooltip();
         }
 
+        float translation = 0;
         boolean isNotificationEnabled = notification != null && !mState.linkedNotification;
         if (isNotificationEnabled) {
             final boolean isNotifVisible = active == notification;
-            animateViewOut(notification.view, isNotifVisible, 0, z);
+            animateViewOut(notification.view, isNotifVisible, translation, z);
             z /= 2;
-            width = isNotifVisible ? width : width * 2;
+            translation += isNotifVisible ? 0 : width;
         }
         if (alarm != null) {
             final boolean isAlarmVisible = active == alarm;
-            animateViewOut(alarm.view, isAlarmVisible, isNotificationEnabled ? width : 0, z);
+            animateViewOut(alarm.view, isAlarmVisible, translation, z);
             z /= 2;
-            width = isAlarmVisible ? 0 : width;
+            translation += isAlarmVisible ? 0 : width;
         }
         if (ring != null) {
             final boolean isRingVisible = active == ring;
-            animateViewOut(ring.view, isRingVisible, width, z);
+            animateViewOut(ring.view, isRingVisible, translation, z);
             z /= 2;
-            width += isRingVisible ? 0 : (mWidth + mSpacer);
+            translation += isRingVisible ? 0 : width;
         }
         if (media != null) {
             Util.setVisOrGone(media.view, true);
-            animateViewOut(media.view, true, width, z);
+            animateViewOut(media.view, true, translation, z);
         }
         if (mShowingMediaDevices) {
             mDialogRowsView.setAlpha(1f);
@@ -769,9 +770,10 @@ public class VolumeDialogImpl implements VolumeDialog,
             });
             mMediaButton.setOnClickListener(v -> {
                 int x = (int) (isLandscape() ? (mVolumePanelOnLeft ? (
-                        mWidth + mSpacer + mWidth / 2)
+                        (mWidth + mSpacer) * 2 + mWidth / 2)
                         : mWidth / 2)
                         : (1.5 * mWidth + mSpacer));
+
                 int endRadius = (int) Math.hypot((isLandscape() ? 2.2 : 1.1) * (1.5 * mWidth +
                         mSpacer), mHeight);
                 if (mShowingMediaDevices) {
@@ -818,7 +820,7 @@ public class VolumeDialogImpl implements VolumeDialog,
                         mWidth = (float) active.view.getWidth();
                     }
 
-                    float width = mWidth + mSpacer;
+                    final float width = mWidth + mSpacer;
                     float z = mElevation;
 
                     boolean showMediaOutput = !Utils.isAudioModeOngoingCall(mContext) &&
@@ -839,26 +841,28 @@ public class VolumeDialogImpl implements VolumeDialog,
                         }
                     }
 
+                    float translation = 0;
                     boolean isNotificationEnabled = notification != null && !mState.linkedNotification;
                     if (isNotificationEnabled) {
                         final boolean isNotifVisible = active == notification;
-                        animateViewIn(notification.view, isNotifVisible, 0, z);
+                        animateViewIn(notification.view, isNotifVisible, translation, z);
                         z /= 2;
+                        translation += isNotifVisible ? 0 : width;
                     }
                     if (alarm != null) {
                         final boolean isAlarmVisible = active == alarm;
-                        animateViewIn(alarm.view, isAlarmVisible, isNotificationEnabled ? width : 0, z);
+                        animateViewIn(alarm.view, isAlarmVisible, translation, z);
                         z /= 2;
-                        width = isAlarmVisible ? 0 : width;
+                        translation = isAlarmVisible ? 0 : width;
                     }
                     if (ring != null) {
                         final boolean isRingVisible = active == ring;
-                        animateViewIn(ring.view, isRingVisible, width, z);
+                        animateViewIn(ring.view, isRingVisible, translation, z);
                         z /= 2;
-                        width += isRingVisible ? 0 : (mWidth + mSpacer);
+                        translation += isRingVisible ? 0 : width;
                     }
                     if (media != null) {
-                        animateViewIn(media.view, true, width, z);
+                        animateViewIn(media.view, true, translation, z);
                     }
 
                     provideTouchHapticH(VibrationEffect.get(VibrationEffect.EFFECT_TICK));
