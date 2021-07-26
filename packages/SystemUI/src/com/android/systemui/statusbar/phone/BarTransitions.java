@@ -64,8 +64,8 @@ public class BarTransitions {
     @Retention(RetentionPolicy.SOURCE)
     public @interface TransitionMode {}
 
-    public static final int LIGHTS_IN_DURATION = 250;
-    public static final int LIGHTS_OUT_DURATION = 1500;
+    public static final int LIGHTS_IN_DURATION = 240;
+    public static final int LIGHTS_OUT_DURATION = 700;
     public static final int BACKGROUND_DURATION = 200;
 
     private final String mTag;

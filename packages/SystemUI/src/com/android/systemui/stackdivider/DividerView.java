@@ -84,8 +84,8 @@ public class DividerView extends FrameLayout implements OnTouchListener,
         void growRecents();
     }
 
-    static final long TOUCH_ANIMATION_DURATION = 150;
-    static final long TOUCH_RELEASE_ANIMATION_DURATION = 200;
+    static final long TOUCH_ANIMATION_DURATION = 135;
+    static final long TOUCH_RELEASE_ANIMATION_DURATION = 180;
 
     public static final int INVALID_RECENTS_GROW_TARGET = -1;
 

@@ -26,7 +26,7 @@ import com.android.systemui.statusbar.notification.stack.StackStateAnimator;
  * A helper to fade views in and out.
  */
 public class CrossFadeHelper {
-    public static final long ANIMATION_DURATION_LENGTH = 210;
+    public static final long ANIMATION_DURATION_LENGTH = 200;
 
     public static void fadeOut(final View view) {
         fadeOut(view, null);
