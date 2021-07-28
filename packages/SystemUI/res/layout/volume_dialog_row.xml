@@ -73,7 +73,7 @@
                 android:padding="@dimen/volume_row_app_icon_padding"
                 android:layoutDirection="ltr"
                 android:scaleType="fitCenter"
-                android:tint="?android:attr/colorAccent"
+                style="@style/VolumeButtons"
                 android:soundEffectsEnabled="false" />
 
             <com.android.systemui.statusbar.AlphaOptimizedTextView
