@@ -187,7 +187,6 @@ import android.os.RemoteException;
 import android.os.ResultReceiver;
 import android.os.ServiceManager;
 import android.os.ShellCallback;
-import android.os.SystemClock;
 import android.os.SystemProperties;
 import android.os.Trace;
 import android.os.UserHandle;
@@ -225,7 +224,6 @@ import android.util.Pair;
 import android.util.Slog;
 import android.util.SparseArray;
 import android.util.StatsEvent;
-import android.util.TimeUtils;
 import android.util.Xml;
 import android.util.proto.ProtoOutputStream;
 import android.view.accessibility.AccessibilityEvent;
@@ -300,7 +298,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.Set;
@@ -456,9 +453,6 @@ public class NotificationManagerService extends SystemService {
     boolean mScreenOn = true;
     protected boolean mInCallStateOffHook = false;
     boolean mNotificationPulseEnabled;
-    private boolean mVibrateOnNotifications;
-
-    private boolean mSoundVibScreenOn;
 
     private Uri mInCallNotificationUri;
     private AudioAttributes mInCallNotificationAudioAttributes;
@@ -479,13 +473,11 @@ public class NotificationManagerService extends SystemService {
     final ArrayMap<Integer, ArrayMap<String, String>> mAutobundledSummaries = new ArrayMap<>();
     final ArrayList<ToastRecord> mToastQueue = new ArrayList<>();
     final ArrayMap<String, NotificationRecord> mSummaryByGroupKey = new ArrayMap<>();
-
     // Keep track of `CancelNotificationRunnable`s which have been delayed due to awaiting
     // enqueued notifications to post
     @GuardedBy("mNotificationLock")
     final ArrayMap<NotificationRecord, ArrayList<CancelNotificationRunnable>> mDelayedCancelations =
             new ArrayMap<>();
-    final ArrayMap<String, Long> mLastSoundTimestamps = new ArrayMap<>();
 
     // The last key in this list owns the hardware.
     ArrayList<String> mLights = new ArrayList<>();
@@ -549,6 +541,8 @@ public class NotificationManagerService extends SystemService {
     private InstanceIdSequence mNotificationInstanceIdSequence;
     private Set<String> mMsgPkgsAllowedAsConvos = new HashSet();
     private final InjectableSystemClock mSystemClock;
+
+	private boolean mSoundVibScreenOn;
 
     static class Archive {
         final SparseArray<Boolean> mEnabled;
@@ -1636,9 +1630,7 @@ public class NotificationManagerService extends SystemService {
                 = Settings.Global.getUriFor(Settings.Global.MAX_NOTIFICATION_ENQUEUE_RATE);
         private final Uri NOTIFICATION_HISTORY_ENABLED
                 = Settings.Secure.getUriFor(Settings.Secure.NOTIFICATION_HISTORY_ENABLED);
-        private final Uri VIBRATE_ON_NOTIFICATIONS
-                = Settings.System.getUriFor(Settings.System.VIBRATE_ON_NOTIFICATIONS);
-        private final Uri NOTIFICATION_SOUND_VIB_SCREEN_ON
+    	private final Uri NOTIFICATION_SOUND_VIB_SCREEN_ON
                 = Settings.System.getUriFor(Settings.System.NOTIFICATION_SOUND_VIB_SCREEN_ON);
 
         SettingsObserver(Handler handler) {
@@ -1657,9 +1649,7 @@ public class NotificationManagerService extends SystemService {
                     false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(NOTIFICATION_HISTORY_ENABLED,
                     false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(VIBRATE_ON_NOTIFICATIONS,
-                    false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(NOTIFICATION_SOUND_VIB_SCREEN_ON,
+        	resolver.registerContentObserver(NOTIFICATION_SOUND_VIB_SCREEN_ON,
                     false, this, UserHandle.USER_ALL);
             update(null);
         }
@@ -1689,11 +1679,6 @@ public class NotificationManagerService extends SystemService {
             if (uri == null || NOTIFICATION_BUBBLES_URI.equals(uri)) {
                 mPreferencesHelper.updateBubblesEnabled();
             }
-            if (uri == null || VIBRATE_ON_NOTIFICATIONS.equals(uri)) {
-                mVibrateOnNotifications = Settings.System.getIntForUser(resolver,
-                        Settings.System.VIBRATE_ON_NOTIFICATIONS, 1,
-                        UserHandle.USER_CURRENT) == 1;
-            }
             if (uri == null || NOTIFICATION_HISTORY_ENABLED.equals(uri)) {
                 final IntArray userIds = mUserProfiles.getCurrentProfileIds();
 
@@ -1702,7 +1687,7 @@ public class NotificationManagerService extends SystemService {
                             Settings.Secure.NOTIFICATION_HISTORY_ENABLED, 0) == 1);
                 }
             }
-            if (uri == null || NOTIFICATION_SOUND_VIB_SCREEN_ON.equals(uri)) {
+        	if (uri == null || NOTIFICATION_SOUND_VIB_SCREEN_ON.equals(uri)) {
                 mSoundVibScreenOn = Settings.System.getIntForUser(resolver,
                         Settings.System.NOTIFICATION_SOUND_VIB_SCREEN_ON, 1,
                         UserHandle.USER_CURRENT) == 1;
@@ -3114,19 +3099,6 @@ public class NotificationManagerService extends SystemService {
             }
 
             handleSavePolicyFile();
-        }
-
-        @Override
-        public void setNotificationSoundTimeout(String pkg, int uid, long timeout) {
-            checkCallerIsSystem();
-            mPreferencesHelper.setNotificationSoundTimeout(pkg, uid, timeout);
-            handleSavePolicyFile();
-        }
-
-        @Override
-        public long getNotificationSoundTimeout(String pkg, int uid) {
-            checkCallerIsSystem();
-            return mPreferencesHelper.getNotificationSoundTimeout(pkg, uid);
         }
 
         /**
@@ -5104,16 +5076,6 @@ public class NotificationManagerService extends SystemService {
                     .exec(this, in, out, err, args, callback, resultReceiver);
         }
 
-        @Override
-        public void forceShowLedLight(int color) {
-            forceShowLed(color);
-        }
-
-        @Override
-        public void forcePulseLedLight(int color, int onTime, int offTime) {
-            forcePulseLed(color, onTime, offTime);
-        }
-
         /**
          * Get stats committed after startNs
          *
@@ -5155,6 +5117,16 @@ public class NotificationManagerService extends SystemService {
             }
             Slog.e(TAG, "exiting pullStats: bad request");
             return 0;
+        }
+
+        @Override
+        public void forceShowLedLight(int color) {
+            forceShowLed(color);
+        }
+
+        @Override
+        public void forcePulseLedLight(int color, int onTime, int offTime) {
+            forcePulseLed(color, onTime, offTime);
         }
     };
 
@@ -5630,14 +5602,6 @@ public class NotificationManagerService extends SystemService {
             if (!zenOnly) {
                 pw.println("\n  Usage Stats:");
                 mUsageStats.dump(pw, "    ", filter);
-            }
-
-            long now = SystemClock.elapsedRealtime();
-            pw.println("\n  Last notification sound timestamps:");
-            for (Map.Entry<String, Long> entry : mLastSoundTimestamps.entrySet()) {
-                pw.print("    " + entry.getKey() + " -> ");
-                TimeUtils.formatDuration(entry.getValue(), now, pw);
-                pw.println(" ago");
             }
         }
     }
@@ -7000,13 +6964,9 @@ public class NotificationManagerService extends SystemService {
                         AudioAttributes.toLegacyStreamType(record.getAudioAttributes())) == 0) {
                     vibration = mFallbackVibrationPattern;
                 }
-                hasValidVibrate = vibration != null
-                        && (mVibrateOnNotifications
-                        || (mAudioManager.getRingerModeInternal()
-                        == AudioManager.RINGER_MODE_VIBRATE));
+                hasValidVibrate = vibration != null;
                 boolean hasAudibleAlert = hasValidSound || hasValidVibrate;
-                if (hasAudibleAlert && !shouldMuteNotificationLocked(record)
-                        && !isInSoundTimeoutPeriod(record)) {
+                if (hasAudibleAlert && !shouldMuteNotificationLocked(record)) {
                     if (!sentAccessibilityEvent) {
                         sendAccessibilityEvent(notification, record.getSbn().getPackageName());
                         sentAccessibilityEvent = true;
@@ -7060,14 +7020,10 @@ public class NotificationManagerService extends SystemService {
         } else if (wasShowLights) {
             updateLightsLocked();
         }
-        if (buzz || beep) {
-            mLastSoundTimestamps.put(generateLastSoundTimeoutKey(record),
-                    SystemClock.elapsedRealtime());
-        }
         final int buzzBeepBlink = (buzz ? 1 : 0) | (beep ? 2 : 0) | (blink ? 4 : 0);
         if (buzzBeepBlink > 0) {
             // Ignore summary updates because we don't display most of the information.
-            if (!blink && record.getSbn().isGroup() && record.getSbn().getNotification().isGroupSummary()) {
+            if (record.getSbn().isGroup() && record.getSbn().getNotification().isGroupSummary()) {
                 if (DEBUG_INTERRUPTIVENESS) {
                     Slog.v(TAG, "INTERRUPTIVENESS: "
                             + record.getKey() + " is not interruptive: summary");
@@ -7092,42 +7048,6 @@ public class NotificationManagerService extends SystemService {
         }
         record.setAudiblyAlerted(buzz || beep);
         return buzzBeepBlink;
-    }
-
-    private boolean isInSoundTimeoutPeriod(NotificationRecord record) {
-        long timeoutMillis = mPreferencesHelper.getNotificationSoundTimeout(
-                record.getSbn().getPackageName(), record.getSbn().getUid());
-        if (timeoutMillis == 0) {
-            return false;
-        }
-
-        Long value = mLastSoundTimestamps.get(generateLastSoundTimeoutKey(record));
-        if (value == null) {
-            return false;
-        }
-        return SystemClock.elapsedRealtime() - value < timeoutMillis;
-    }
-
-    private String generateLastSoundTimeoutKey(NotificationRecord record) {
-        return record.getSbn().getPackageName() + "|" + record.getSbn().getUid();
-    }
-
-    private void forceShowLed(int color) {
-        if (color != -1) {
-            mNotificationLight.turnOff();
-            mNotificationLight.setColor(color);
-        } else {
-            mNotificationLight.turnOff();
-        }
-    }
-
-    private void forcePulseLed(int color, int onTime, int offTime) {
-        if (color != -1) {
-            mNotificationLight.turnOff();
-            mNotificationLight.setFlashing(color, LogicalLight.LIGHT_FLASH_TIMED, onTime, offTime);
-        } else {
-            mNotificationLight.turnOff();
-        }
     }
 
     @GuardedBy("mNotificationLock")
@@ -7167,6 +7087,24 @@ public class NotificationManagerService extends SystemService {
         }*/
 
         return true;
+    }
+
+    private void forceShowLed(int color) {
+        if (color != -1) {
+            mNotificationLight.turnOff();
+            mNotificationLight.setColor(color);
+        } else {
+            mNotificationLight.turnOff();
+        }
+    }
+
+    private void forcePulseLed(int color, int onTime, int offTime) {
+        if (color != -1) {
+            mNotificationLight.turnOff();
+            mNotificationLight.setFlashing(color, LogicalLight.LIGHT_FLASH_TIMED, onTime, offTime);
+        } else {
+            mNotificationLight.turnOff();
+        }
     }
 
     @GuardedBy("mNotificationLock")
