@@ -1,6 +1,6 @@
 <?xml  version="1.0" encoding="utf-8" ?>
 <com.android.internal.widget.MediaNotificationView
-    android:id="@id/status_bar_latest_event_content"
+    android:id="@+id/status_bar_latest_event_content"
     android:tag="bigMediaNarrow"
     android:background="@drawable/activated_background_holo_light"
     android:layout_width="fill_parent"
@@ -15,7 +15,7 @@
         <ImageView
         android:background="@drawable/activated_background_holo_light"  
         android:layout_gravity="end"
-        android:id="@id/right_icon"
+        android:id="@+id/right_icon"
         android:layout_width=" 00.0dip"
         android:layout_height="00.0dip"
         android:paddingEnd="12dp" />
@@ -28,14 +28,14 @@
     
     <LinearLayout
         android:orientation="vertical"
-        android:id="@id/notification_media_content"
+        android:id="@+id/notification_media_content"
         
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
         
         <LinearLayout
             android:orientation="vertical"
-            android:id="@id/notification_main_column"
+            android:id="@+id/notification_main_column"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="20dp"
@@ -47,7 +47,7 @@
      <TextView 
         android:textAppearance="@style/TextAppearance.DeviceDefault.Notification.Title" 
         android:ellipsize="marquee" 
-        android:id="@id/title" 
+        android:id="@+id/title" 
         android:background="@drawable/background_holo_dark"
         android:fadingEdge="horizontal"
         android:layout_width="200dp" 
@@ -62,7 +62,7 @@
         android:ellipsize="marquee" 
         android:gravity="top" 
         android:layout_gravity="top" 
-        android:id="@id/text" 
+        android:id="@+id/text" 
         android:fadingEdge="horizontal" 
         android:layout_width="wrap_content" 
         android:drawableLeft="@drawable/ic_doc_album" 
@@ -75,34 +75,34 @@
         style="@style/Widget.DeviceDefault.Notification.Text" />
         <ViewStub
             android:background="@drawable/background_holo_light"
-            android:id="@id/notification_media_seekbar_container"
+            android:id="@+id/notification_media_seekbar_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         </LinearLayout>
         <LinearLayout
             android:paddingStart="15dp"
             android:orientation="horizontal"
-            android:id="@id/media_actions"
+            android:id="@+id/media_actions"
             android:layoutDirection="ltr"
             style="@style/NotificationMediaActionContainer">
              
             <include
-                android:id="@id/action0"
+                android:id="@+id/action0"
                 layout="@layout/notification_material_media_action"/>
             <include
-                android:id="@id/action1"
+                android:id="@+id/action1"
                 layout="@layout/notification_material_media_action"/>
             <include
-                android:id="@id/action2"
+                android:id="@+id/action2"
                 layout="@layout/notification_material_media_action"/>
             <include
-                android:id="@id/action3"
+                android:id="@+id/action3"
                 layout="@layout/notification_material_media_action"/>
             <include
-                android:id="@id/action4"
+                android:id="@+id/action4"
                 layout="@layout/notification_material_media_action"/>
             <include
-                android:id="@id/media_seamless"
+                android:id="@+id/media_seamless"
                 layout="@layout/notification_material_media_action"/>
                 
         </LinearLayout>

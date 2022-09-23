@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     android:orientation="vertical"
-    android:id="@id/notification_media_progress"
+    android:id="@+id/notification_media_progress"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:layout_alignParentBottom="true"
@@ -9,7 +9,7 @@
     <RelativeLayout
         android:paddingStart="-15dp"
         android:layout_gravity="start"
-        android:id="@id/notification_media_progress_time"
+        android:id="@+id/notification_media_progress_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"> 
         
@@ -19,15 +19,15 @@
             android:layout_height="wrap_content" 
             android:layout_marginTop="5.0dip">
             <SeekBar
-            android:id="@id/notification_media_progress_bar"
+            android:id="@+id/notification_media_progress_bar"
             android:clickable="true"
             android:layout_width="fill_parent"
             android:layout_height="20dip"
             android:maxHeight="40dp"
-            android:layout_toLeftOf="@id/messaging_group_sending_progress_container"
-            android:layout_toRightOf="@id/message_name"
-            android:layout_alignTop="@id/message_name"
-            android:layout_alignBottom="@id/messaging_group_sending_progress_container"
+            android:layout_toLeftOf="@+id/messaging_group_sending_progress_container"
+            android:layout_toRightOf="@+id/message_name"
+            android:layout_alignTop="@+id/message_name"
+            android:layout_alignBottom="@+id/messaging_group_sending_progress_container"
             style="@style/Widget.ProgressBar.Horizontal" />
             
         <LinearLayout
@@ -37,7 +37,7 @@
            <TextView
                 android:textSize="13.0sp"
                 android:gravity="start"
-                android:id="@id/notification_media_elapsed_time"
+                android:id="@+id/notification_media_elapsed_time"
                 
                 android:paddingStart="5dp"
                 android:paddingEnd="4dp"
@@ -57,7 +57,7 @@
                 android:textSize="13.0sp"
                 android:gravity="end"
                 android:layout_gravity="end"
-                android:id="@id/notification_media_total_time"
+                android:id="@+id/notification_media_total_time"
                 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
