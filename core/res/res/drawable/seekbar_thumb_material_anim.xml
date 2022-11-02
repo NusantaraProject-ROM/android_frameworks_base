@@ -17,7 +17,7 @@
     </item>
     <item
         android:state_pressed="true"
-        android:id="@id/pressed">
+        android:id="@+id/pressed">
         <shape
             android:dither="true"
             android:visible="false"
@@ -31,7 +31,7 @@
         </shape>
     </item>
     <item
-        android:id="@id/unpressed">
+        android:id="@+id/unpressed">
         <shape
             android:dither="true"
             android:visible="false"
