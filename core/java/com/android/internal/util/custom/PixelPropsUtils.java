@@ -177,7 +177,7 @@ public class PixelPropsUtils {
         propsToChangeMI11.put("MANUFACTURER", "Xiaomi");
         propsToChangeMI11.put("DEVICE", "star");
         propsToChangeMI11.put("PRODUCT", "star");
-        propsToChangeMI11.put("MODEL", "M2102K1G");
+        propsToChangeMI11.put("MODEL", "M2006J10C");
     }
 
     public static void setProps(String packageName) {
