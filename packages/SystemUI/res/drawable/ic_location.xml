@@ -1,27 +1,14 @@
-<!--
-  ~ Copyright (C) 2014 The Android Open Source Project
-  ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~ you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
-  ~
-  ~      http://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License
-  -->
-<vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="17dp"
-    android:height="17dp"
-    android:viewportWidth="24.0"
-    android:viewportHeight="24.0">
+<?xml version="1.0" encoding="utf-8"?>
+<vector
+    android:height="24.0dip"
+    android:width="24.0dip"
+    android:viewportWidth="48.0"
+    android:viewportHeight="48.0"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <path
-        android:fillColor="#FFFFFFFF"
-        android:pathData="M12,2C8.13,2 5,5.13 5,9c0,5.25 7,13 7,13s7,-7.75 7,-13C19,5.13 15.87,2 12,2zM7,9c0,-2.76 2.24,-5 5,-5s5,2.24 5,5c0,2.88 -2.88,7.19 -5,9.88C9.92,16.21 7,11.85 7,9z"/>
+        android:fillColor="#ffffffff"
+        android:pathData="M27.93,37.76 L12.2,28.68a5,5 0,0 1,-0.6 -8.25L30.9,5.16h0a5,5 0,0 1,8 4.64L35.37,34.16a5,5 0,0 1,-7.44 3.6ZM34.5,8.22a1,1 0,0 0,-1.12 0.08h0L14.08,23.57a1,1 0,0 0,-0.38 0.85,1 1,0 0,0 0.5,0.8L29.93,34.3a1,1 0,0 0,0.93 0,1 1,0 0,0 0.56,-0.75L35,9.23A1,1 0,0 0,34.5 8.22ZM32.14,6.73h0Z" />
     <path
-        android:fillColor="#FFFFFFFF"
-        android:pathData="M12,9m-2.5,0a2.5,2.5 0,1 1,5 0a2.5,2.5 0,1 1,-5 0"/>
+        android:fillColor="#ffffffff"
+        android:pathData="M12.0422,33.3354L24.2222,40.3354A2.0069,2.0069 76.0949,0 1,24.9622 43.0754L24.9622,43.0754A2.0069,2.0069 76.0949,0 1,22.2222 43.8154L10.0422,36.8154A2.0069,2.0069 73.4266,0 1,9.3022 34.0754L9.3022,34.0754A2.0069,2.0069 73.4266,0 1,12.0422 33.3354z" />
 </vector>

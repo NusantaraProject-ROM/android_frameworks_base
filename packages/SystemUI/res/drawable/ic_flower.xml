@@ -1,25 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-     Copyright (C) 2017 crDroid Android Project
-
-     Licensed under the Apache License, Version 2.0 (the "License");
-     you may not use this file except in compliance with the License.
-     You may obtain a copy of the License at
-
-          http://www.apache.org/licenses/LICENSE-2.0
-
-     Unless required by applicable law or agreed to in writing, software
-     distributed under the License is distributed on an "AS IS" BASIS,
-     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-     See the License for the specific language governing permissions and
-     limitations under the License.
--->
-<vector xmlns:android="http://schemas.android.com/apk/res/android"
-        android:width="16.0dp"
-        android:height="16.0dp"
-        android:viewportWidth="24.0"
-        android:viewportHeight="24.0">
+<vector
+    android:name="vector"
+    android:height="22.0dip"
+    android:width="22.0dip"
+    android:viewportWidth="24.0"
+    android:viewportHeight="24.0"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <path
-        android:fillColor="#FFFFFFFF"
-        android:pathData="M12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16M18.7,12.4C18.42,12.24 18.13,12.11 17.84,12C18.13,11.89 18.42,11.76 18.7,11.6C20.62,10.5 21.69,8.5 21.7,6.41C19.91,5.38 17.63,5.3 15.7,6.41C15.42,6.57 15.16,6.76 14.92,6.95C14.97,6.64 15,6.32 15,6C15,3.78 13.79,1.85 12,0.81C10.21,1.85 9,3.78 9,6C9,6.32 9.03,6.64 9.08,6.95C8.84,6.75 8.58,6.56 8.3,6.4C6.38,5.29 4.1,5.37 2.3,6.4C2.3,8.47 3.37,10.5 5.3,11.59C5.58,11.75 5.87,11.88 6.16,12C5.87,12.1 5.58,12.23 5.3,12.39C3.38,13.5 2.31,15.5 2.3,17.58C4.09,18.61 6.37,18.69 8.3,17.58C8.58,17.42 8.84,17.23 9.08,17.04C9.03,17.36 9,17.68 9,18C9,20.22 10.21,22.15 12,23.19C13.79,22.15 15,20.22 15,18C15,17.68 14.97,17.36 14.92,17.05C15.16,17.25 15.42,17.43 15.7,17.59C17.62,18.7 19.9,18.62 21.7,17.59C21.69,15.5 20.62,13.5 18.7,12.4Z" />
+        android:name="path_1"
+        android:fillColor="@color/color_idk"
+        android:pathData="M 10.691 0.457 C 11.141 0.422 11.602 0.336 12.047 0.426 C 12.617 0.563 13.012 1.16 12.938 1.734 C 12.578 3.223 12.738 4.82 13.316 6.234 C 13.957 7.793 15.133 9.121 16.602 9.945 C 18.168 10.84 20.066 11.141 21.832 10.77 C 22.18 10.699 22.551 10.707 22.879 10.848 C 23.281 11.023 23.566 11.438 23.574 11.879 C 23.617 14.75 22.527 17.621 20.594 19.742 C 18.883 21.652 16.52 22.969 13.992 23.402 C 11.582 23.828 9.039 23.473 6.848 22.379 C 4.27 21.117 2.203 18.859 1.172 16.184 C 0.188 13.672 0.125 10.809 0.996 8.258 C 1.832 5.777 3.539 3.605 5.75 2.203 C 7.234 1.25 8.938 0.648 10.691 0.457 M 3.754 7.863 C 2.703 9.945 2.492 12.43 3.18 14.656 C 3.781 16.664 5.105 18.438 6.84 19.609 C 8.371 20.648 10.223 21.203 12.074 21.18 C 14.18 21.168 16.266 20.395 17.875 19.039 C 19.602 17.605 20.773 15.52 21.086 13.297 C 20.316 13.344 19.539 13.328 18.777 13.203 C 16.117 12.805 13.664 11.254 12.137 9.043 C 10.891 7.273 10.27 5.086 10.355 2.926 C 7.539 3.414 5.023 5.309 3.754 7.863 Z M 3.754 7.863"
+        android:strokeColor="#00000000"
+        android:strokeWidth="1.0"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:strokeMiterLimit="10.0" />
+    
+    <group
+        android:name="group">
+        <path
+            android:name="path_4"
+            android:fillColor="#60ffffff"
+            android:pathData="M 3.754 7.863 C 5.023 5.309 7.539 3.414 10.355 2.926 C 10.27 5.086 10.891 7.273 12.137 9.043 C 13.664 11.254 16.117 12.805 18.777 13.203 C 19.539 13.328 20.316 13.344 21.086 13.297 C 20.773 15.52 19.602 17.605 17.875 19.039 C 16.266 20.395 14.18 21.168 12.074 21.18 C 10.223 21.203 8.371 20.648 6.84 19.609 C 5.105 18.438 3.781 16.664 3.18 14.656 C 2.492 12.43 2.703 9.945 3.754 7.863 Z M 3.754 7.863"
+            android:strokeColor="#00000000"
+            android:strokeWidth="1.0"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round"
+            android:strokeMiterLimit="10.0" />
+    </group>
+    
 </vector>
