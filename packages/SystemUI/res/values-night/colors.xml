@@ -93,6 +93,7 @@
     <color name="qs_tile_icon_oos">#98a098</color>
 
     <!-- Brightness slider like A12 -->
+    <color name="color_idk">#ffffffff</color>
     <color name="tint_Brightness_slider_like_A12">@*android:color/config_progress_background_tint</color>
     <color name="color_Brightness_slider_like_A12">@color/white_disabled</color>
 
