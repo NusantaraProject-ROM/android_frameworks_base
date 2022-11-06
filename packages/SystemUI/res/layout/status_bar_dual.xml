@@ -146,6 +146,28 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent" />
 
+                       <LinearLayout
+                            android:gravity="end|center"
+                            android:orientation="horizontal"
+                            android:id="@+id/qsb_daily_data_usage_layout"
+                            android:clipChildren="false"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:layout_marginStart="4.0dip">
+                            <ImageView
+                                android:id="@+id/qsb_daily_data_usage_icon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="16.0sp"
+                                android:src="@drawable/ic_data_saver_off"/>
+                            <com.android.systemui.statusbar.info.DataUsageView
+                                android:textAppearance="@style/TextAppearance.StatusBar.Clock"
+                                android:gravity="end|center"
+                                android:id="@+id/qsb_data_sim_usage"
+                                android:layout_width="wrap_content"
+                                android:layout_height="fill_parent"
+                                android:singleLine="true"/>
+                        </LinearLayout>
+
                         <com.android.systemui.BatteryMeterView
                             android:id="@id/battery"
                             android:clipChildren="false"
