@@ -33,7 +33,7 @@
                         android:width="2.0dip"
                         android:color="#a36daab2" />
                     <size
-                        android:height="30.0dip" />
+                        android:height="35.0dip" />
                     <solid
                         android:color="@android:color/white" />
                     <corners
