@@ -4,9 +4,9 @@
         <shape android:shape="rectangle">
             <gradient
                 android:angle="45"
-                android:centerColor="@android:color/holo_green_light"
-                android:endColor="@android:color/holo_blue_light"
-                android:startColor="@android:color/holo_red_light"/>
+                android:centerColor="@color/holo_green_light"
+                android:endColor="@color/holo_blue_light"
+                android:startColor="@color/holo_red_light"/>
 
             <corners android:radius="?android:dialogCornerRadius"/>
 
