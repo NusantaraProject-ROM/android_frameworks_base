@@ -1,4 +1,4 @@
-<?xml  version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <com.android.internal.widget.MediaNotificationView
     android:id="@+id/status_bar_latest_event_content"
     android:tag="media"
@@ -6,21 +6,17 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
     <ImageView
-          
-        android:layout_gravity="end"
+        android:layout_gravity="end|center|top"
         android:id="@+id/right_icon"
-        android:layout_width=" 00.0dip"
-        android:layout_height="00.0dip"
-        android:paddingEnd="12dp" />
+        android:layout_width="0.0dip"
+        android:layout_height="0.0dip"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true" />
     <include
         android:layout_width="fill_parent"
-        
         android:layout_height="@dimen/media_notification_header_height"
-        layout="@layout/notification_template_header"/>
+        layout="@layout/notification_template_header" />
     <LinearLayout
         android:orientation="vertical"
         android:id="@+id/notification_media_content"
@@ -44,34 +40,10 @@
                 android:layout_height="wrap_content"
                 android:minHeight="@dimen/notification_min_content_height"
                 android:layout_weight="1.0">
-                <TextView 
-        android:textAppearance="@style/TextAppearance.DeviceDefault.Notification.Title" 
-        android:ellipsize="marquee" 
-        android:id="@+id/title" 
-        
-        android:fadingEdge="horizontal"
-        android:layout_width="200dp" 
-        android:layout_height="wrap_content" 
-        android:drawableLeft="@drawable/ic_audio_media"
-        android:singleLine="true" 
-        android:layout_marginBottom="7dp"
-        android:marqueeRepeatLimit="marquee_forever"
-        android:textAlignment="viewStart" />
-     <com.android.internal.widget.ImageFloatingTextView 
-        android:ellipsize="marquee" 
-        android:gravity="top" 
-        android:layout_gravity="top" 
-        android:id="@+id/text" 
-        android:fadingEdge="horizontal" 
-        android:layout_width="0dp" 
-        android:drawableLeft="@drawable/ic_doc_album" 
-        
-        android:layout_height="0dp" 
-        android:layout_marginTop="@dimen/notification_text_margin_top"
-        android:paddingEnd="7dp" 
-        android:singleLine="true" 
-        android:textAlignment="viewStart" 
-        style="@style/Widget.DeviceDefault.Notification.Text" />
+                <include
+                    layout="@layout/notification_template_part_line1" />
+                <include
+                    layout="@layout/notification_template_text" />
             </LinearLayout>
             <LinearLayout
                 android:layout_gravity="end|center|top"
@@ -83,20 +55,19 @@
                 android:layout_marginStart="10.0dip">
                 <include
                     android:id="@+id/action0"
-                    layout="@layout/notification_material_media_action"/>
+                    layout="@layout/notification_material_media_action" />
                 <include
                     android:id="@+id/action1"
-                    layout="@layout/notification_material_media_action"/>
+                    layout="@layout/notification_material_media_action" />
                 <include
                     android:id="@+id/action2"
-                    layout="@layout/notification_material_media_action"/>
+                    layout="@layout/notification_material_media_action" />
             </LinearLayout>
         </LinearLayout>
         <ViewStub
             android:id="@+id/notification_media_seekbar_container"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"/>
+            android:layout_alignParentBottom="true" />
     </LinearLayout>
-    </FrameLayout>
 </com.android.internal.widget.MediaNotificationView>
