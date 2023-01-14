@@ -6,5 +6,5 @@
         android:startColor="#d13c7de8"
         android:endColor="#d7f442b0"
         android:angle="0.0"/>
-    <corners android:radius="?dialogCornerRadius"/>
+    <corners android:radius="?android:dialogCornerRadius"/>
 </shape> 
