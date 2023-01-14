@@ -2,7 +2,7 @@
 <com.android.systemui.qs.QSCarrier
     android:gravity="start|center"
     android:orientation="horizontal"
-    android:id="@id/linear_carrier"
+    android:id="@+id/linear_carrier"
     android:background="@drawable/abc_slice_remote_input_bg"
     android:focusable="true"
     android:clickable="false"
@@ -22,7 +22,7 @@
         layout="@layout/mobile_signal_group" />
     <com.android.systemui.util.AutoMarqueeTextView
         android:textAppearance="@style/TextAppearance.QS.Status"
-        android:id="@id/qs_carrier_text"
+        android:id="@+id/qs_carrier_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:maxEms="7"

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     android:theme="@style/QSHeaderTheme"
-    android:id="@id/header_text_container"
+    android:id="@+id/header_text_container"
     android:visibility="invisible"
     android:layout_width="fill_parent"
     android:layout_height="@dimen/qs_header_tooltip_height"
-    android:layout_below="@id/quick_status_bar_system_icons"
+    android:layout_below="@+id/quick_status_bar_system_icons"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <com.android.systemui.qs.QSHeaderInfoLayout
-        android:id="@id/status_container"
+        android:id="@+id/status_container"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_marginTop="7.0dip"
@@ -16,14 +16,14 @@
         android:layout_weight="1.0">
         <LinearLayout
             android:gravity="center_vertical"
-            android:id="@id/alarm_container"
+            android:id="@+id/alarm_container"
             android:background="@drawable/abc_slice_remote_input_bg"
             android:focusable="true"
             android:clickable="true"
             android:layout_width="85.0dip"
             android:layout_height="fill_parent">
             <ImageView
-                android:id="@id/next_alarm_icon"
+                android:id="@+id/next_alarm_icon"
                 android:visibility="gone"
                 android:layout_width="@dimen/qs_header_alarm_icon_size"
                 android:layout_height="@dimen/qs_header_alarm_icon_size"
@@ -32,7 +32,7 @@
             <com.android.systemui.util.AutoMarqueeTextView
                 android:textAppearance="@style/TextAppearance.QS.Status"
                 android:ellipsize="marquee"
-                android:id="@id/next_alarm_text"
+                android:id="@+id/next_alarm_text"
                 android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -41,27 +41,27 @@
                 android:layout_marginStart="@dimen/qs_header_alarm_text_margin_start" />
         </LinearLayout>
         <View
-            android:id="@id/status_separator"
+            android:id="@+id/status_separator"
             android:visibility="gone"
             android:layout_width="@dimen/qs_header_separator_width"
             android:layout_height="fill_parent" />
         <LinearLayout
             android:gravity="center_vertical"
-            android:id="@id/ringer_container"
+            android:id="@+id/ringer_container"
             android:background="@drawable/abc_slice_remote_input_bg"
             android:focusable="true"
             android:clickable="true"
             android:layout_width="85.0dip"
             android:layout_height="fill_parent">
             <ImageView
-                android:id="@id/ringer_mode_icon"
+                android:id="@+id/ringer_mode_icon"
                 android:visibility="gone"
                 android:layout_width="@dimen/qs_header_alarm_icon_size"
                 android:layout_height="@dimen/qs_header_alarm_icon_size" />
             <com.android.systemui.util.AutoMarqueeTextView
                 android:textAppearance="@style/TextAppearance.QS.Status"
                 android:ellipsize="marquee"
-                android:id="@id/ringer_mode_text"
+                android:id="@+id/ringer_mode_text"
                 android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -72,7 +72,7 @@
     </com.android.systemui.qs.QSHeaderInfoLayout>
     <include
         android:layout_gravity="end|center"
-        android:id="@id/carrier_group"
+        android:id="@+id/carrier_group"
         android:focusable="false"
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"

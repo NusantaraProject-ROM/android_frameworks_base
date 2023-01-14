@@ -7,7 +7,7 @@
     <LinearLayout
         android:layout_gravity="center_horizontal"
         android:orientation="vertical"
-        android:id="@id/clock_view"
+        android:id="@+id/clock_view"
         android:paddingLeft="20.0dip"
         android:paddingBottom="150.0dip"
         android:layout_width="fill_parent"
@@ -18,7 +18,7 @@
             android:textColor="?wallpaperTextColor"
             android:ellipsize="none"
             android:layout_gravity="center_horizontal"
-            android:id="@id/clock_day"
+            android:id="@+id/clock_day"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:fontFamily="aclonica"
@@ -27,7 +27,7 @@
         <LinearLayout
             android:layout_gravity="left"
             android:orientation="horizontal"
-            android:id="@id/clock"
+            android:id="@+id/clock"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="-4.0dip">
@@ -36,7 +36,7 @@
                 android:textColor="?android:colorAccent"
                 android:ellipsize="none"
                 android:layout_gravity="center_horizontal"
-                android:id="@id/time_clock_accented"
+                android:id="@+id/time_clock_accented"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:fontFamily="aclonica"
@@ -47,7 +47,7 @@
                 android:textColor="?android:textColorPrimary"
                 android:ellipsize="none"
                 android:layout_gravity="bottom|center"
-                android:id="@id/time_clock"
+                android:id="@+id/time_clock"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="aclonica"
@@ -59,7 +59,7 @@
             android:textColor="?android:textColorPrimary"
             android:ellipsize="none"
             android:layout_gravity="bottom|center|left"
-            android:id="@id/timedate"
+            android:id="@+id/timedate"
             android:paddingBottom="@dimen/title_clock_padding"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -76,14 +76,14 @@
                 android:layout_height="25.0dip"
                 android:layout_weight="1.0">
                 <com.android.systemui.BatteryMeterView
-                    android:id="@id/battery"
+                    android:id="@+id/battery"
                     android:clipChildren="false"
                     android:clipToPadding="false"
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent" />
             </LinearLayout>
             <ImageView
-                android:id="@id/daily_data_usage_icon"
+                android:id="@+id/daily_data_usage_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/status_bar_icon_drawing_size"
                 android:layout_marginTop="5.0dip"
@@ -92,14 +92,14 @@
                 android:textAppearance="@style/TextAppearance.QS.Status"
                 android:gravity="end"
                 android:layout_gravity="start|center"
-                android:id="@id/data_sim_usage"
+                android:id="@+id/data_sim_usage"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_marginTop="2.0dip"
                 android:singleLine="true" />
             <com.android.systemui.statusbar.phone.StatusIconContainer
                 android:gravity="center_vertical"
-                android:id="@id/statusIcons"
+                android:id="@+id/statusIcons"
                 android:layout_width="20.0dip"
                 android:layout_height="fill_parent"
                 android:paddingEnd="@dimen/signal_cluster_battery_padding" />
