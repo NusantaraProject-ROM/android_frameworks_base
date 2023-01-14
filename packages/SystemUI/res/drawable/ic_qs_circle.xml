@@ -13,12 +13,4 @@
         android:strokeLineCap="square"
         android:strokeLineJoin="miter"
         android:fillType="nonZero" />
-    <path
-        android:fillColor="#ffffffff"
-        android:pathData="M13.31,10.64L26.62,10.64A2.62 2.62 0 0 1 29.25,13.27L29.25,26.79A2.62 2.62 0 0 1 26.62,29.41L13.31,29.41A2.62 2.62 0 0 1 10.69,26.79L10.69,13.27A2.62 2.62 0 0 1 13.31,10.64z"
-        android:strokeColor="#ff000000"
-        android:strokeWidth="0.59999996"
-        android:strokeLineCap="square"
-        android:strokeLineJoin="miter"
-        android:fillType="nonZero" />
 </vector>

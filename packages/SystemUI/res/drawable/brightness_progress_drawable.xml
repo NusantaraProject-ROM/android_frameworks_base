@@ -5,15 +5,12 @@
         android:gravity="fill_horizontal|center"
         android:id="@android:id/background">
         <shape
-            android:tint="#ff1e1e1e"
+            android:tint="?android:colorControlActivated"
             android:shape="rectangle">
-            <stroke
-                android:width="2.0dip"
-                android:color="#a36daab2" />
             <size
-                android:height="5.0dip" />
+                android:height="37.0dip" />
             <solid
-                android:color="#ff1a1a1a" />
+                android:color="#40000000" />
             <corners
                 android:radius="25.0dip" />
         </shape>

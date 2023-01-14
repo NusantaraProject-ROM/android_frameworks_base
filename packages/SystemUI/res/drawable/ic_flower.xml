@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <vector
     android:name="vector"
-    android:height="22.0dip"
+    android:height="21.0dip"
     android:width="22.0dip"
     android:viewportWidth="24.0"
     android:viewportHeight="24.0"
@@ -15,7 +15,6 @@
         android:strokeLineCap="round"
         android:strokeLineJoin="round"
         android:strokeMiterLimit="10.0" />
-    
     <group
         android:name="group">
         <path
@@ -28,5 +27,4 @@
             android:strokeLineJoin="round"
             android:strokeMiterLimit="10.0" />
     </group>
-    
 </vector>
