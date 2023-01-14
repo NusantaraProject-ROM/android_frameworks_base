@@ -1,79 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2014 The Android Open Source Project
-
-     Licensed under the Apache License, Version 2.0 (the "License");
-     you may not use this file except in compliance with the License.
-     You may obtain a copy of the License at
-
-          http://www.apache.org/licenses/LICENSE-2.0
-
-     Unless required by applicable law or agreed to in writing, software
-     distributed under the License is distributed on an "AS IS" BASIS,
-     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-     See the License for the specific language governing permissions and
-     limitations under the License.
--->
 <com.android.systemui.qs.QSContainerImpl
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/quick_settings_container"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:id="@id/quick_settings_container"
+    android:clipChildren="false"
     android:clipToPadding="false"
-    android:clipChildren="false" >
-
-    <!-- Main QS background -->
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <View
-        android:id="@+id/quick_settings_background"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:elevation="4dp"
-        android:background="@drawable/qs_background_inset" />
-
-    <!-- Gradient view behind QS -->
+        android:id="@id/quick_settings_background"
+        android:background="@drawable/qs_background_inset"
+        android:layout_width="fill_parent"
+        android:layout_height="0.0dip"
+        android:elevation="4.0dip" />
     <View
-        android:id="@+id/quick_settings_gradient_view"
-        android:layout_width="match_parent"
-        android:layout_height="126dp"
-        android:clipToPadding="false"
+        android:id="@id/quick_settings_gradient_view"
+        android:background="@drawable/qs_bg_gradient"
         android:clipChildren="false"
-        android:background="@drawable/qs_bg_gradient" />
-
-    <!-- Black part behind the status bar -->
+        android:clipToPadding="false"
+        android:layout_width="fill_parent"
+        android:layout_height="126.0dip" />
     <LinearLayout
-        android:id="@+id/quick_settings_status_bar_background"
-        android:layout_width="match_parent"
-        android:layout_height="@*android:dimen/quick_qs_offset_height"
-        android:background="@color/quick_settings_status_bar_background_color">
-
-        <ImageView android:id="@+id/qs_header_image_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+        android:id="@id/quick_settings_status_bar_background"
+        android:background="@color/quick_settings_status_bar_background_color"
+        android:layout_width="fill_parent"
+        android:layout_height="@android:dimen/notification_header_margin_bottom">
+        <ImageView
+            android:id="@id/qs_header_image_view"
+            android:background="@drawable/qs_header_image_view_outline"
+            android:visibility="gone"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
             android:layout_marginTop="@dimen/qs_header_image_top_margin"
             android:layout_marginBottom="@dimen/qs_header_image_bottom_margin"
-            android:scaleType="centerCrop"
-            android:visibility="gone"
-            android:background="@drawable/qs_header_image_view_outline" />
+            android:scaleType="centerCrop" />
     </LinearLayout>
-
     <com.android.systemui.qs.QSPanel
-        android:id="@+id/quick_settings_panel"
-        android:layout_marginTop="@*android:dimen/quick_qs_offset_height"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@*android:dimen/extra_qs_footer_height"
-        android:elevation="4dp"
+        android:id="@id/quick_settings_panel"
         android:background="@android:color/transparent"
         android:focusable="true"
-        android:accessibilityTraversalBefore="@android:id/edit"
-    />
-
-    <include layout="@layout/quick_status_bar_expanded_header" />
-
-    <include layout="@layout/qs_footer_impl" />
-
-    <include android:id="@+id/qs_detail" layout="@layout/qs_detail" />
-
-    <include android:id="@+id/qs_customize" layout="@layout/qs_customize_panel"
-        android:visibility="gone" />
-
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@android:dimen/notification_header_margin_bottom"
+        android:layout_marginBottom="@android:dimen/datepicker_component_width"
+        android:elevation="4.0dip"
+        android:accessibilityTraversalBefore="16908291" />
+    <include
+        layout="@layout/quick_status_bar_expanded_header" />
+    <include
+        layout="@layout/qs_footer_impl" />
+    <include
+        android:id="@id/qs_detail"
+        layout="@layout/qs_detail" />
+    <include
+        android:id="@id/qs_customize"
+        android:visibility="gone"
+        layout="@layout/qs_customize_panel" />
 </com.android.systemui.qs.QSContainerImpl>
