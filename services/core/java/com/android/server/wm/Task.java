@@ -3484,6 +3484,27 @@ class Task extends TaskFragment {
         info.mTopActivityLocusId = topRecord != null ? topRecord.getLocusId() : null;
     }
 
+    /**
+     * Removes the activity info if the activity belongs to a different uid, which is
+     * different from the app that hosts the task.
+     */
+    static void trimIneffectiveInfo(Task task, TaskInfo info) {
+        final ActivityRecord baseActivity = task.getActivity(r -> !r.finishing,
+                false /* traverseTopToBottom */);
+        final int baseActivityUid =
+                baseActivity != null ? baseActivity.getUid() : task.effectiveUid;
+
+        if (info.topActivityInfo != null
+                && task.effectiveUid != info.topActivityInfo.applicationInfo.uid) {
+            info.topActivity = null;
+            info.topActivityInfo = null;
+        }
+
+        if (task.effectiveUid != baseActivityUid) {
+            info.baseActivity = null;
+        }
+    }
+
     @Nullable PictureInPictureParams getPictureInPictureParams() {
         return getPictureInPictureParams(getTopMostTask());
     }
@@ -5475,7 +5496,23 @@ class Task extends TaskFragment {
                     parentLaunchMode == ActivityInfo.LAUNCH_SINGLE_TASK ||
                     parentLaunchMode == ActivityInfo.LAUNCH_SINGLE_TOP ||
                     (destIntentFlags & Intent.FLAG_ACTIVITY_CLEAR_TOP) != 0) {
-                parent.deliverNewIntentLocked(callingUid, destIntent, destGrants, srec.packageName);
+                boolean abort;
+                try {
+                    abort = !mTaskSupervisor.checkStartAnyActivityPermission(destIntent,
+                            parent.info, null /* resultWho */, -1 /* requestCode */, srec.getPid(),
+                            callingUid, srec.info.packageName, null /* callingFeatureId */,
+                            false /* ignoreTargetSecurity */, false /* launchingInTask */, srec.app,
+                            null /* resultRecord */, null /* resultRootTask */);
+                } catch (SecurityException e) {
+                    abort = true;
+                }
+                if (abort) {
+                    android.util.EventLog.writeEvent(0x534e4554, "238605611", callingUid, "");
+                    foundParentInTask = false;
+                } else {
+                    parent.deliverNewIntentLocked(callingUid, destIntent, destGrants,
+                            srec.packageName);
+                }
             } else {
                 try {
                     ActivityInfo aInfo = AppGlobals.getPackageManager().getActivityInfo(
