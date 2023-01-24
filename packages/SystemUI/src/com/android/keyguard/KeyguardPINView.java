@@ -25,6 +25,11 @@ import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 
+import com.android.keyguard.KeyguardSecurityModel.SecurityMode;
+import com.android.settingslib.animation.AppearAnimationUtils;
+import com.android.settingslib.animation.DisappearAnimationUtils;
+import com.android.systemui.R;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -237,13 +242,18 @@ public class KeyguardPINView extends KeyguardPinBasedInputView {
         return false;
     }
 
+    @Override
+    public SecurityMode getSecurityMode() {
+        return SecurityMode.PIN;
+    }
+
     private void validateQuickUnlock(String password) {
         if (password != null) {
             if (password.length() > MINIMUM_PASSWORD_LENGTH_BEFORE_REPORT
                     && kpvCheckPassword(password)) {
                 mPasswordEntry.setEnabled(false);
                 mCallback.reportUnlockAttempt(userId, true, 0);
-                mCallback.dismiss(true, userId);
+                mCallback.dismiss(true, userId, SecurityMode.PIN);
                 resetPasswordText(true, true);
             }
         }

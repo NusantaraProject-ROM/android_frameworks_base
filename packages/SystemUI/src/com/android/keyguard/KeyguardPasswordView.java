@@ -39,6 +39,7 @@ import android.widget.TextView.OnEditorActionListener;
 
 import com.android.internal.widget.LockPatternUtils.RequestThrottledException;
 import com.android.internal.widget.TextViewInputDisabler;
+import com.android.keyguard.KeyguardSecurityModel.SecurityMode;
 import com.android.systemui.R;
 
 import java.util.List;
@@ -365,7 +366,7 @@ public class KeyguardPasswordView extends KeyguardAbsKeyInputView
                 if (entry.length() > MINIMUM_PASSWORD_LENGTH_BEFORE_REPORT
                         && kpvCheckPassword(entry)) {
                     mCallback.reportUnlockAttempt(userId, true, 0);
-                    mCallback.dismiss(true, userId);
+                    mCallback.dismiss(true, userId, SecurityMode.Password);
                     resetPasswordText(true, true);
                 }
             }
@@ -407,6 +408,12 @@ public class KeyguardPasswordView extends KeyguardAbsKeyInputView
             bytes[i] = (byte) chars.charAt(i);
         }
         return bytes;
+    }
+
+    @Override
+    public SecurityMode getSecurityMode() {
+        return SecurityMode.Password;
+
     }
 
     private boolean kpvCheckPassword(String entry) {
