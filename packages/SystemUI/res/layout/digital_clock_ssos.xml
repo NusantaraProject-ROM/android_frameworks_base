@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.android.keyguard.clock.ClockLayout
+    android:layout_gravity="center|top"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical"
+        android:id="@+id/clock_view"
+        android:paddingLeft="20.0dip"
+        android:paddingBottom="150.0dip"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="40.0dip">
+        <TextClock
+            android:textSize="54.5sp"
+            android:textColor="?wallpaperTextColor"
+            android:ellipsize="none"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/clock_day"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="aclonica"
+            android:format12Hour="EEEE"
+            android:format24Hour="EEEE" />
+        <LinearLayout
+            android:layout_gravity="left"
+            android:orientation="horizontal"
+            android:id="@+id/clock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-4.0dip">
+            <TextClock
+                android:textSize="55.5sp"
+                android:textColor="?android:colorAccent"
+                android:ellipsize="none"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/time_clock_accented"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:fontFamily="aclonica"
+                android:format12Hour="h"
+                android:format24Hour="kk" />
+            <TextClock
+                android:textSize="55.5sp"
+                android:textColor="?android:textColorPrimary"
+                android:ellipsize="none"
+                android:layout_gravity="bottom|center"
+                android:id="@+id/time_clock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="aclonica"
+                android:format12Hour=":mm"
+                android:format24Hour=":mm" />
+        </LinearLayout>
+        <TextClock
+            android:textSize="20.0sp"
+            android:textColor="?android:textColorPrimary"
+            android:ellipsize="none"
+            android:layout_gravity="bottom|center|left"
+            android:id="@+id/timedate"
+            android:paddingBottom="@dimen/title_clock_padding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="aclonica"
+            android:format12Hour=" dd MMMM  yyyy"
+            android:format24Hour=" dd MMMM  yyyy" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="25.0dip"
+            android:layout_weight="1.0"
+            android:paddingStart="5.0dip">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="25.0dip"
+                android:layout_weight="1.0">
+                <com.android.systemui.BatteryMeterView
+                    android:id="@+id/battery"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent" />
+            </LinearLayout>
+            <ImageView
+                android:id="@+id/daily_data_usage_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/status_bar_icon_drawing_size"
+                android:layout_marginTop="5.0dip"
+                android:src="@drawable/ic_data_saver_off" />
+            <com.android.systemui.statusbar.info.DataUsageView
+                android:textAppearance="@style/TextAppearance.QS.Status"
+                android:gravity="end"
+                android:layout_gravity="start|center"
+                android:id="@+id/data_sim_usage"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_marginTop="2.0dip"
+                android:singleLine="true" />
+            <com.android.systemui.statusbar.phone.StatusIconContainer
+                android:gravity="center_vertical"
+                android:id="@+id/statusIcons"
+                android:layout_width="20.0dip"
+                android:layout_height="fill_parent"
+                android:paddingEnd="@dimen/signal_cluster_battery_padding" />
+        </LinearLayout>
+    </LinearLayout>
+</com.android.keyguard.clock.ClockLayout>
+

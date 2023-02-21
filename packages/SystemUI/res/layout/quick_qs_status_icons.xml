@@ -1,81 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2017 The Android Open Source Project
-
-     Licensed under the Apache License, Version 2.0 (the "License");
-     you may not use this file except in compliance with the License.
-     You may obtain a copy of the License at
-
-          http://www.apache.org/licenses/LICENSE-2.0
-
-     Unless required by applicable law or agreed to in writing, software
-     distributed under the License is distributed on an "AS IS" BASIS,
-     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-     See the License for the specific language governing permissions and
-     limitations under the License.
--->
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:systemui="http://schemas.android.com/apk/res-auto"
+    android:theme="@style/QSHeaderTheme"
     android:id="@+id/quick_qs_status_icons"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/qs_header_tooltip_height"
-    android:layout_below="@id/quick_status_bar_system_icons"
+    android:focusable="true"
+    android:clickable="false"
     android:clipChildren="false"
     android:clipToPadding="false"
-    android:clickable="false"
-    android:focusable="true"
-    android:theme="@style/QSHeaderTheme">
-
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/qs_header_tooltip_height"
+    android:layout_below="@+id/quick_status_bar_system_icons"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <com.android.systemui.statusbar.policy.DateView
-        android:id="@+id/date"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start|center_vertical"
-        android:gravity="center_vertical"
-        android:singleLine="true"
         android:textAppearance="@style/TextAppearance.StatusBar.Clock"
         android:textColor="@color/qs_date_color"
-        systemui:datePattern="@string/abbrev_wday_month_day_no_year_alarm" />
-
+        android:gravity="center_vertical"
+        android:layout_gravity="start|center"
+        android:id="@+id/date"
+        android:layout_width="0.0dip"
+        android:layout_height="0.0dip"
+        android:singleLine="true"
+        app:datePattern="@string/abbrev_wday_month_day_no_year_alarm" />
+    <include
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1.0"
+        layout="@layout/mland_scorefield" />
     <LinearLayout
-        android:id="@+id/daily_data_usage_layout"
-        android:layout_height="match_parent"
-        android:layout_width="wrap_content"
-        android:layout_marginStart="4dp"
+        android:gravity="end|center"
         android:orientation="horizontal"
+        android:id="@+id/daily_data_usage_layout"
+        android:clipChildren="false"
+        android:layout_width="0.0dip"
+        android:layout_height="0.0dip"
         android:paddingStart="@dimen/data_usage_padding_start"
-        android:gravity="center_vertical|end"
-        android:clipChildren="false" >
-
+        android:layout_marginStart="4.0dip">
         <ImageView
             android:id="@+id/daily_data_usage_icon"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
             android:layout_height="@dimen/status_bar_icon_drawing_size"
-            android:layout_width="wrap_content"
-            android:src="@drawable/ic_data_saver_off"
-            android:visibility="gone" />
-
+            android:src="@drawable/ic_data_saver_off" />
         <com.android.systemui.statusbar.info.DataUsageView
-            android:id="@+id/data_sim_usage"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical|end"
             android:textAppearance="@style/TextAppearance.QS.Status"
-            android:singleLine="true"
-            android:visibility="gone" />
+            android:gravity="end|center"
+            android:id="@+id/data_sim_usage"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:singleLine="true" />
     </LinearLayout>
-
     <com.android.systemui.statusbar.phone.StatusIconContainer
         android:id="@+id/statusIcons"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1" />
-
-    <com.android.systemui.BatteryMeterView
-        android:id="@+id/batteryRemainingIcon"
-        android:layout_height="match_parent"
-        android:layout_width="wrap_content"
-        systemui:textAppearance="@style/TextAppearance.StatusBar.Clock"
-        android:paddingStart="@dimen/signal_cluster_battery_padding"
-        android:paddingEnd="@dimen/signal_cluster_battery_padding" />
-
+        android:background="@drawable/abc_slice_remote_input_bg"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="7.0dip"
+        android:layout_marginBottom="7.0dip"
+        android:layout_weight="1.0" />
+    <LinearLayout
+        android:visibility="gone"
+        android:layout_width="0.0dip"
+        android:layout_height="0.0dip">
+        <com.android.systemui.BatteryMeterView
+            android:id="@+id/batteryRemainingIcon"
+            android:visibility="gone"
+            android:layout_width="0.0dip"
+            android:layout_height="0.0dip"
+            app:textAppearance="@style/TextAppearance.StatusBar.Clock" />
+    </LinearLayout>
 </LinearLayout>
