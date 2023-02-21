@@ -1,68 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2012 The Android Open Source Project
-
-     Licensed under the Apache License, Version 2.0 (the "License");
-     you may not use this file except in compliance with the License.
-     You may obtain a copy of the License at
-
-          http://www.apache.org/licenses/LICENSE-2.0
-
-     Unless required by applicable law or agreed to in writing, software
-     distributed under the License is distributed on an "AS IS" BASIS,
-     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-     See the License for the specific language governing permissions and
-     limitations under the License.
--->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:systemui="http://schemas.android.com/apk/res-auto"
-    android:layout_height="wrap_content"
-    android:layout_width="match_parent"
+<LinearLayout
     android:layout_gravity="center_vertical"
-    android:paddingLeft="0dp"
-    android:paddingRight="0dp"
-    style="@style/BrightnessDialogContainer">
-
+    android:paddingLeft="0.0dip"
+    android:paddingRight="0.0dip"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    style="@style/BrightnessDialogContainer"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView
+        android:layout_gravity="center_vertical"
+        android:id="@+id/brightness_level"
+        android:background="@drawable/abc_slice_see_more_bg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_flower"
+        android:scaleType="centerInside"
+        android:layout_marginStart="10.0dip"
+        android:layout_marginEnd="0.0dip" />
     <ImageButton
+        android:layout_gravity="center_vertical"
         android:id="@+id/brightness_left"
-        android:layout_width="36dp"
-        android:layout_height="48dp"
-        android:layout_gravity="center_vertical"
-        android:layout_marginStart="16dp"
+        android:background="?android:selectableItemBackgroundBorderless"
+        android:layout_width="0.0dip"
+        android:layout_height="0.0dip"
         android:src="@drawable/ic_brightness_left"
-        android:background="?android:attr/selectableItemBackgroundBorderless"
         android:contentDescription="@null" />
-
     <com.android.systemui.settings.ToggleSliderView
-        android:id="@+id/brightness_slider"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
         android:layout_gravity="center_vertical"
-        android:layout_weight="1"
-        android:paddingLeft="0dp"
-        android:paddingRight="0dp"
+        android:id="@+id/brightness_slider"
+        android:layout_width="0.0dip"
+        android:layout_height="48.0dip"
+        android:layout_weight="1.0"
         android:contentDescription="@string/accessibility_brightness"
         android:importantForAccessibility="no"
-        systemui:text="@string/status_bar_settings_auto_brightness_label" />
-
+        android:layout_marginStart="-10.0dip"
+        android:layout_marginEnd="-10.0dip"
+        app:text="@string/status_bar_settings_auto_brightness_label" />
     <ImageButton
+        android:layout_gravity="center_vertical"
         android:id="@+id/brightness_right"
-        android:layout_width="36dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="16dp"
-        android:layout_gravity="center_vertical"
+        android:background="?android:selectableItemBackgroundBorderless"
+        android:layout_width="0.0dip"
+        android:layout_height="0.0dip"
         android:src="@drawable/ic_brightness_right"
-        android:background="?android:attr/selectableItemBackgroundBorderless"
         android:contentDescription="@null" />
-
     <ImageButton
-        android:id="@+id/brightness_icon"
-        android:layout_width="36dp"
-        android:layout_height="48dp"
         android:layout_gravity="center_vertical"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="16dp"
-        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:id="@+id/brightness_icon"
+        android:background="@drawable/abc_slice_see_more_bg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:src="@drawable/ic_qs_brightness_auto_off"
-        android:contentDescription="@null" />
-
+        android:contentDescription="@null"
+        android:layout_marginStart="10.0dip"
+        android:layout_marginEnd="10.0dip" />
 </LinearLayout>
