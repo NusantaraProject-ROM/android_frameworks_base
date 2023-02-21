@@ -1,21 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@android:id/progress">
-        <clip
-            android:clipOrientation="horizontal"
-            android:gravity="left">
-            <selector>
-                <item
-                    android:drawable="@android:color/transparent"
-                    android:state_enabled="false" />
-                <item>
-                    <shape android:shape="rectangle">
-                        <corners android:radius="?android:attr/dialogCornerRadius" />
-                        <size android:height="@dimen/volume_dialog_panel_width" />
-                        <solid android:color="?android:attr/colorAccent" />
-                    </shape>
-                </item>
-            </selector>
-        </clip>
+<layer-list
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:gravity="fill_horizontal|center"
+        android:id="@android:id/background">
+        <shape
+            android:shape="rectangle">
+            <size
+                android:height="5.0dip" />
+            <solid
+                android:color="#00000000" />
+            <corners
+                android:radius="99.0dip" />
+        </shape>
+    </item>
+    <item
+        android:gravity="fill_horizontal|center"
+        android:id="@android:id/progress">
+        <scale
+            android:scaleWidth="100%">
+            <shape
+                android:shape="rectangle">
+                <size
+                    android:height="@dimen/volume_dialog_panel_width" />
+                <solid
+                    android:color="?android:colorAccent" />
+                <corners
+                    android:radius="99.0dip" />
+            </shape>
+        </scale>
     </item>
 </layer-list>

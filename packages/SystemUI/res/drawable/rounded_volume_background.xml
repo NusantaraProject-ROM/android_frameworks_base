@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:radius="?android:attr/dialogCornerRadius" />
-    <solid android:color="@color/volume_background_tint" />
+<shape
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners
+        android:radius="22.0dip" />
+    <solid
+        android:color="?android:colorBackgroundFloating" />
 </shape>
