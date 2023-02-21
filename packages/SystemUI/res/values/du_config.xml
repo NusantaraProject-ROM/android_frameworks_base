@@ -25,8 +25,8 @@
     <bool name="config_fingerprintWakeAndUnlock">true</bool>
 
     <!-- Max visible notification icons -->
-    <integer name="config_maxVisibleNotificationIcons">6</integer>
-    <integer name="config_maxVisibleNotificationIconsOnLock">6</integer>
+    <integer name="config_maxVisibleNotificationIcons">9</integer>
+    <integer name="config_maxVisibleNotificationIconsOnLock">9</integer>
 
     <!-- Allow devices override audio panel location to the left side -->
     <bool name="config_audioPanelOnLeftSide">false</bool>
@@ -51,7 +51,7 @@
     <bool name="doze_brightness_sensor_reports_proximity" translatable="false">true</bool>
 
     <!-- Whether to use the mask for the quicksettings icons-->
-    <bool name="config_useMaskForQs">true</bool>
+    <bool name="config_useMaskForQs">false</bool>
 
     <!-- Navbar -->
     <string name="config_navBarLayoutHandleArrows" translatable="false">back[1.7WC];home_handle;ime_switcher[1.7WC]</string>
